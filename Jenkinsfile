@@ -21,16 +21,7 @@ pipeline {
             }
         }
 
-        stage('3. Build Frontend (Angular)') {
-            steps {
-                dir('frontend') {
-                    bat 'npm install'
-                    bat 'npm run build'
-                }
-            }
-        }
-
-        stage('4. Archive Artifacts') {
+        stage('3. Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'backend/target/*.jar', fingerprint: true
             }
