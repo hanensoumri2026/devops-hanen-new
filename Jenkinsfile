@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('2. Build Backend (Maven)') {
+        stage('2. Build Backend') {
             steps {
                 dir('backend') {
                     bat 'mvn clean package -DskipTests'
@@ -21,15 +21,7 @@ pipeline {
             }
         }
 
-        stage('3. Test Backend') {
-            steps {
-                dir('backend') {
-                   bat 'mvn test -DskipTests'
-                }
-            }
-        }
-
-        stage('4. Build Frontend (Angular)') {
+        stage('3. Build Frontend (Angular)') {
             steps {
                 dir('frontend') {
                     bat 'npm install'
@@ -38,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('5. Archive Artifacts') {
+        stage('4. Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'backend/target/*.jar', fingerprint: true
             }
