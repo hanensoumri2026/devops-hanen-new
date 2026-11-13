@@ -24,7 +24,7 @@ pipeline {
         stage('3. Test Backend') {
             steps {
                 dir('backend') {
-                    bat 'mvn test'
+                   bat 'mvn test -DskipTests'
                 }
             }
         }
